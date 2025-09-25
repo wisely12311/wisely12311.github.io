@@ -1270,10 +1270,10 @@ pre[class*="language-"] {
 <p><img alt="geometry_zones.png" src="portfolio_images/compressorSteady/screenshots/geometry_zones.png"></p>
 <h2 class="atx" id="3-mesh">3. Mesh</h2>
 <p>The fluid domain was discretised using a hybrid mesh of 18 layers of hexahedral cells near solid boundaries and polyhedral cells in the core flow. This yielded an average y⁺ ≈ 35 in the MRF steady-state case, placing wall resolution in the logarithmic layer for use with wall functions in the chosen turbulence model. A conformal rotor–stator interface ensured accurate neighbour interpolation in the MRF setup, while the same mesh was applied in the sliding-mesh case with Non-Conformal Coupling (NCC) at the interface. The final mesh contained 5.5 × 10⁶ cells.</p>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-37-mesh_iso.png"></p>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-43-mesh_top.png"></p>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-48-mesh_clipside.png"></p>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-54-mesh_clipside_zoom.png"></p>
+<p><img alt="" src="portfolio_images/compressorSteady/screenshots/mesh_iso.png"></p>
+<p><img alt="" src="portfolio_images/compressorSteady/screenshots/mesh_top.png"></p>
+<p><img alt="" src="portfolio_images/compressorSteady/screenshots/mesh_clipside.png"></p>
+<p><img alt="" src="portfolio_images/compressorSteady/screenshots/mesh_clipside_zoom.png"></p>
 <h2 class="atx" id="4-openfoam-setup">4. OpenFOAM setup</h2>
 <p>Four simulations were performed progressively with an increasing level of setup complexity.</p>
 <table>
@@ -1337,7 +1337,7 @@ pre[class*="language-"] {
 </tr>
 </tbody></table>
 <h3 class="atx" id="residuals-a-simplefoam-steady-state-frozen-blade">Residuals: A. SimpleFOAM Steady-State Frozen Blade</h3>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-13-17-10-18-residual.svg"></p>
+<p><img alt="" src="portfolio_images/compressorSteady/postProcessing/residuals/0/residual.svg"></p>
 <h3 class="atx" id="residuals-b-simplefoam-steady-state-mrf-blade">Residuals: B. SimpleFOAM Steady-State MRF Blade</h3>
 <p><img alt="residual.svg" src="portfolio_images/compressorMRF/postProcessing/residuals/0/residual.svg"></p>
 <h3 class="atx" id="residuals-c-pimplefoam-transient-frozen-blade">Residuals: C. PimpleFOAM Transient Frozen Blade</h3>
