@@ -1112,11 +1112,7 @@ pre[class*="language-"] {
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9wcmlzbWpzL3RoZW1lcy9wcmlzbS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7RUFJRTs7QUFFRjs7Q0FFQyxZQUFZO0NBQ1osZ0JBQWdCO0NBQ2hCLHdCQUF3QjtDQUN4QixzRUFBc0U7Q0FDdEUsY0FBYztDQUNkLGdCQUFnQjtDQUNoQixnQkFBZ0I7Q0FDaEIsb0JBQW9CO0NBQ3BCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsZ0JBQWdCOztDQUVoQixnQkFBZ0I7Q0FDaEIsY0FBYztDQUNkLFdBQVc7O0NBRVgscUJBQXFCO0NBQ3JCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsYUFBYTtBQUNkOztBQUVBOztDQUVDLGlCQUFpQjtDQUNqQixtQkFBbUI7QUFDcEI7O0FBRUE7O0NBRUMsaUJBQWlCO0NBQ2pCLG1CQUFtQjtBQUNwQjs7QUFFQTtDQUNDOztFQUVDLGlCQUFpQjtDQUNsQjtBQUNEOztBQUVBLGdCQUFnQjtBQUNoQjtDQUNDLFlBQVk7Q0FDWixjQUFjO0NBQ2QsY0FBYztBQUNmOztBQUVBOztDQUVDLG1CQUFtQjtBQUNwQjs7QUFFQSxnQkFBZ0I7QUFDaEI7Q0FDQyxhQUFhO0NBQ2IsbUJBQW1CO0NBQ25CLG1CQUFtQjtBQUNwQjs7QUFFQTs7OztDQUlDLGdCQUFnQjtBQUNqQjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTs7Ozs7OztDQU9DLFdBQVc7QUFDWjs7QUFFQTs7Ozs7O0NBTUMsV0FBVztBQUNaOztBQUVBOzs7OztDQUtDLGNBQWM7Q0FDZCxvRUFBb0U7Q0FDcEUsaUNBQWlDO0FBQ2xDOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsY0FBYztBQUNmOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsaUJBQWlCO0FBQ2xCO0FBQ0E7Q0FDQyxrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxZQUFZO0FBQ2IiLCJzb3VyY2VSb290IjoiIn0= */
   </style>
   <style>
-    body {
-      background-color: #000000;
-      margin: 0;
-      padding: 0;
-    }
+  
   </style>
   <style>
     .markdown-body {
@@ -1126,8 +1122,6 @@ pre[class*="language-"] {
       max-width: 980px;
       margin: 0 auto;
       padding: 45px;
-      background-color: #000000;
-      color: #ffffff;
     }
 
     @media not print {
@@ -1143,25 +1137,16 @@ pre[class*="language-"] {
     }
 
     .hf-container {
-      color: #ffffff;
+      color: #24292e;
       line-height: 1.3;
     }
 
     .markdown-body .highlight pre,
     .markdown-body pre {
       white-space: pre-wrap;
-      background-color: #1a1a1a;
-      color: #ffffff;
     }
     .markdown-body table {
       display: table;
-      background-color: #1a1a1a;
-      border: 1px solid #333333;
-    }
-    .markdown-body table th,
-    .markdown-body table td {
-      border: 1px solid #333333;
-      color: #ffffff;
     }
     .markdown-body img[data-align="center"] {
       display: block;
@@ -1263,526 +1248,116 @@ pre[class*="language-"] {
   <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
 </head>
 <body>
-  <article class="markdown-body"><h1 class="atx" id="turbocharger-compressor-stage-cfd">Turbocharger Compressor Stage CFD</h1>
-<h2 class="atx" id="operating-condition">Operating Condition</h2>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-13-12-42-46-image.png"></p>
-<h2 class="atx" id="geometry">Geometry</h2>
+  <article class="markdown-body"><h1 class="atx" id="turbocharger-compressor-stage-cfd-mrf-vs-sliding-mesh">Turbocharger Compressor Stage CFD: MRF vs Sliding Mesh</h1>
+<h2 class="atx" id="1-objective-andamp-key-results">1. Objective &amp; Key Results</h2>
+<p>This project compares the steady Multiple Reference Frame (MRF) method with the unsteady sliding-mesh approach to evaluate accuracy versus computational cost in predicting compressor performance.</p>
+<ul>
+<li><p>MRF: converged in ~1.7 hours; predicted a stable 2.13× pressure boost.</p>
+</li>
+<li><p>Sliding Mesh: required &gt; 380 hours (&gt; 2 weeks); captured periodic pressure fluctuations at the rotor frequency and blade-passing harmonics.</p>
+</li>
+</ul>
+<h2 class="atx" id="2-geometry">2. Geometry</h2>
+<p>The 3D CAD model of the turbocharger used for the CFD analysis is shown below. </p>
 <p><img alt="turbo.png" src="portfolio_images/turbo.png"></p>
+<img data-align="inline" alt="turbo_wo_fluiddomain.png" src="portfolio_images/turbo_wo_fluiddomain.png" title="">
+
+<p>The compressor stage fluid domain was extracted and repaired by removing small faces, resolving split/duplicate edges, and closing gaps to ensure a watertight mesh can be generated in the next step.</p>
 <p><img alt="turbo_w_fluiddomain.png" src="portfolio_images/turbo_w_fluiddomain.png"></p>
-<p><img alt="turbo_wo_fluiddomain.png" src="portfolio_images/turbo_wo_fluiddomain.png"></p>
 <p><img alt="geometry_iso.png" src="portfolio_images/compressorSteady/screenshots/geometry_iso.png"></p>
 <p><img alt="geometry_top.png" src="portfolio_images/compressorSteady/screenshots/geometry_top.png"></p>
+<p>The fluid domain was split into two domain. The rotor (red) domain and the stator domain (blue).</p>
 <p><img alt="geometry_zones.png" src="portfolio_images/compressorSteady/screenshots/geometry_zones.png"></p>
-<h2 class="atx" id="mesh">Mesh</h2>
-<p><img alt="image" src="portfolio_images/yPlus_region.JPG"></p>
-<p>&nbsp;Viscous Sublayer&nbsp;(y+ &lt; 5):</p>
-<ul>
-<li><p>Flow&nbsp;is&nbsp;laminar&nbsp;near&nbsp;the wall</p>
-</li>
-<li><p>Molecular viscosity dominates</p>
-</li>
-<li><p>Simple linear&nbsp;velocity profile: u+ =&nbsp;y+</p>
-</li>
-<li><p>Easy&nbsp;to&nbsp;model accurately</p>
-</li>
-</ul>
-<p>Log-Law&nbsp;Region (y+ &gt; 30):</p>
-<ul>
-<li><p>Flow&nbsp;is&nbsp;fully turbulent</p>
-</li>
-<li><p>Turbulent&nbsp;viscosity dominates</p>
-</li>
-<li><p>Well-established logarithmic velocity&nbsp;profile: u+ =&nbsp;(1/κ) ln(y+) +&nbsp;B</p>
-</li>
-<li><p>Wall functions&nbsp;work perfectly&nbsp;here</p>
-</li>
-</ul>
-<p>Buffer Layer (5 &lt; y+ &lt; 30):</p>
-<ul>
-<li><p>Transitional region&nbsp;between laminar&nbsp;and turbulent</p>
-</li>
-<li><p>Both molecular and turbulent viscosity&nbsp;are important</p>
-</li>
-<li><p>No simple&nbsp;analytical solution&nbsp;exists</p>
-</li>
-<li><p>Velocity profile&nbsp;is complex and&nbsp;difficult to model</p>
-</li>
-<li><p>Wall&nbsp;functions&nbsp;assume&nbsp;you're in log-law&nbsp;region, so they give&nbsp;inaccurate&nbsp;results</p>
-</li>
-</ul>
-<h3 class="atx" id="the-andquotunsafeandquot-nature">The "Unsafe" Nature:</h3>
-<ul>
-<li><p>Wall&nbsp;functions use&nbsp;log-law assumptions&nbsp;that don't apply in buffer layer</p>
-</li>
-<li><p>Results&nbsp;become&nbsp;unreliable and&nbsp;inconsistent</p>
-</li>
-<li><p>Can lead to&nbsp;poor&nbsp;convergence&nbsp;and&nbsp;inaccurate predictions</p>
-</li>
-</ul>
-<h3 class="atx" id="mesh-check">Mesh Check</h3>
-<p>6 yPlus</p>
-<pre><code class="fenced-code-block">/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
-\*---------------------------------------------------------------------------*/
-Build  : 12-86e126a7bc4d
-Exec   : checkMesh
-Date   : Aug 12 2025
-Time   : 02:10:17
-Host   : "wisely123-System-Product-Name"
-PID    : 46754
-I/O    : uncollated
-Case   : /home/wisely123/OpenFOAM/wisely123-12/run/compressorSteady
-nProcs : 1
-sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
-fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
-allowSystemOperations : Allowing user-supplied system call operations
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-Create time
-
-Create polyMesh for time = 0
-
-Time = 0s
-
-Mesh stats
-    points:           7522283
-    faces:            12295069
-    internal faces:   12120086
-    cells:            2652756
-    faces per cell:   9.20369
-    boundary patches: 5
-    point zones:      0
-    face zones:       3
-    cell zones:       2
-
-Overall number of cells of each type:
-    hexahedra:     280612
-    prisms:        1448
-    wedges:        663
-    pyramids:      28
-    tet wedges:    1
-    tetrahedra:    120
-    polyhedra:     2369884
-    Breakdown of polyhedra by number of faces:
-        faces   number of cells
-            5   11
-            6   24962
-            7   308520
-            8   968820
-            9   231003
-           10   153920
-           11   141975
-           12   149167
-           13   124496
-           14   102263
-           15   76755
-           16   43022
-           17   24074
-           18   12148
-           19   5233
-           20   2148
-           21   858
-           22   302
-           23   132
-           24   43
-           25   23
-           26   7
-           27   1
-           28   1
-
-Checking topology...
-    Boundary definition OK.
-    Cell to face addressing OK.
- ***Unused points found in the mesh, number unused by faces: 176869 number unused by cells: 176869
-  &lt;&lt;Found 308 neighbouring cells with multiple in between faces.
-    Upper triangular ordering OK.
-    Face vertices OK.
-    Number of regions: 1 (OK).
-
-Checking patch topology for multiply connected surfaces...
-                   Patch    Faces   Points                  Surface topology
-                  outlet      475      590  ok (non-closed singly connected)
-                   inlet      559      747  ok (non-closed singly connected)
-                   blade    96437   184116  ok (non-closed singly connected)
-       rotating_domain:1    29040    58006  ok (non-closed singly connected)
-        housing_domain:1    48472    95841  ok (non-closed singly connected)
-
-Checking geometry...
-    Overall domain bounding box (-0.0727598 -0.0668648 0.05325) (0.0694313 0.0730894 0.11725)
-    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
-    Mesh has 3 solution (non-empty) directions (1 1 1)
-    Max cell openness = 6.54459e-16 OK.
-    Max aspect ratio = 90.1842 OK.
-    Minimum face area = 6.80925e-12. Maximum face area = 1.46956e-05.  Face area magnitudes OK.
-    Min volume = 1.95254e-15. Max volume = 2.31187e-08.  Total volume = 0.000331981.  Cell volumes OK.
-    Mesh non-orthogonality Max: 78.0292 average: 14.0014
-   *Number of severely non-orthogonal (&gt; 70 degrees) faces: 1601.
-    Non-orthogonality check OK.
-    Face pyramids OK.
- ***Max skewness = 4.6759, 86 highly skew faces detected which may impair the quality of the results
-    Coupled point location match (average 0) OK.
-
-Failed 2 mesh checks.
-
-End</code></pre>
-<pre><code class="fenced-code-block"># y+ ()       
-# Time            patch             min               max               average       
-0                 blade    2.288286e-01    6.104462e+00    2.666689e+00
-0                 rotating_domain:1    1.600543e-01    6.345905e+00    3.124792e+00
-0                 housing_domain:1    9.353638e-01    3.428263e+00    3.197820e+00
-100               blade    2.080203e-04    3.184888e+01    1.316240e+01
-100               rotating_domain:1    7.877758e-02    3.841328e+01    1.562595e+01
-100               housing_domain:1    7.016993e-01    2.631389e+01    1.256205e+01
-200               blade    3.219385e-03    3.397653e+01    1.332953e+01
-200               rotating_domain:1    8.219692e-02    3.618209e+01    1.571690e+01
-200               housing_domain:1    4.215000e-01    2.863235e+01    1.261512e+01
-300               blade    7.078483e-03    3.308298e+01    1.340550e+01
-300               rotating_domain:1    8.059763e-02    4.027240e+01    1.592333e+01
-300               housing_domain:1    5.218546e-01    2.934017e+01    1.303031e+01</code></pre>
-<p>1 yPlus</p>
-<pre><code class="fenced-code-block">/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
-\*---------------------------------------------------------------------------*/
-Build  : 12-86e126a7bc4d
-Exec   : checkMesh
-Date   : Aug 14 2025
-Time   : 16:59:07
-Host   : "wisely123-System-Product-Name"
-PID    : 4369
-I/O    : uncollated
-Case   : /home/wisely123/OpenFOAM/wisely123-12/run/compressorMRF
-nProcs : 1
-sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
-fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
-allowSystemOperations : Allowing user-supplied system call operations
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-Create time
-
-Create polyMesh for time = 0
-
-Time = 0s
-
-Mesh stats
-    points:           6987083
-    faces:            11598633
-    internal faces:   11454409
-    cells:            2531658
-    faces per cell:   9.10591
-    boundary patches: 5
-    point zones:      0
-    face zones:       3
-    cell zones:       2
-
-Overall number of cells of each type:
-    hexahedra:     250315
-    prisms:        2694
-    wedges:        529
-    pyramids:      3
-    tet wedges:    0
-    tetrahedra:    1
-    polyhedra:     2278116
-    Breakdown of polyhedra by number of faces:
-        faces   number of cells
-            5   16
-            6   21663
-            7   347997
-            8   939128
-            9   222931
-           10   136078
-           11   125069
-           12   133686
-           13   111421
-           14   93700
-           15   68144
-           16   38363
-           17   20901
-           18   10551
-           19   4922
-           20   2125
-           21   834
-           22   370
-           23   127
-           24   56
-           25   25
-           26   6
-           27   1
-           28   1
-           29   1
-
-Checking topology...
-    Boundary definition OK.
-    Cell to face addressing OK.
- ***Unused points found in the mesh, number unused by faces: 147177 number unused by cells: 147177
-  &lt;&lt;Found 374 neighbouring cells with multiple in between faces.
-    Upper triangular ordering OK.
-    Face vertices OK.
-    Number of regions: 1 (OK).
-
-Checking patch topology for multiply connected surfaces...
-                   Patch    Faces   Points                  Surface topology
-                  outlet      590      735  ok (non-closed singly connected)
-                   inlet      691      920  ok (non-closed singly connected)
-                   blade    79034   149349  ok (non-closed singly connected)
-       rotating_domain:1    20398    40721  ok (non-closed singly connected)
-        housing_domain:1    43511    85919  ok (non-closed singly connected)
-
-Checking geometry...
-    Overall domain bounding box (-0.0727952 -0.0668758 0.05325) (0.0694313 0.0731052 0.11725)
-    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
-    Mesh has 3 solution (non-empty) directions (1 1 1)
-    Max cell openness = 7.75874e-16 OK.
-    Max aspect ratio = 92.1284 OK.
-    Minimum face area = 3.0614e-12. Maximum face area = 1.41258e-05.  Face area magnitudes OK.
-    Min volume = 5.5317e-15. Max volume = 2.62724e-08.  Total volume = 0.000332295.  Cell volumes OK.
-    Mesh non-orthogonality Max: 76.591 average: 15.6806
-   *Number of severely non-orthogonal (&gt; 70 degrees) faces: 1690.
-    Non-orthogonality check OK.
-    Face pyramids OK.
- ***Max skewness = 5.1425, 50 highly skew faces detected which may impair the quality of the results
-    Coupled point location match (average 0) OK.
-
-Failed 2 mesh checks.
-
-End</code></pre>
+<h2 class="atx" id="3-mesh">3. Mesh</h2>
+<p>The fluid domain was discretised using a hybrid mesh of 18 layers of hexahedral cells near solid boundaries and polyhedral cells in the core flow. This yielded an average y⁺ ≈ 35 in the MRF steady-state case, placing wall resolution in the logarithmic layer for use with wall functions in the chosen turbulence model. A conformal rotor–stator interface ensured accurate neighbour interpolation in the MRF setup, while the same mesh was applied in the sliding-mesh case with Non-Conformal Coupling (NCC) at the interface. The final mesh contained 5.5 × 10⁶ cells.</p>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-37-mesh_iso.png"></p>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-43-mesh_top.png"></p>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-48-mesh_clipside.png"></p>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-12-01-50-54-mesh_clipside_zoom.png"></p>
-<p>conformal mesh</p>
-<h2 class="atx" id="openfoam-setup">OpenFOAM setup</h2>
-<h3 class="atx" id="a-simplefoam-steady-state-frozen-blade">A. SimpleFOAM Steady-State Frozen Blade</h3>
+<h2 class="atx" id="4-openfoam-setup">4. OpenFOAM setup</h2>
+<p>Four simulations were performed progressively with an increasing level of setup complexity.</p>
 <table>
 <thead>
 <tr>
-<th>patch</th>
-<th>setup</th>
+<th>Sovler</th>
+<th>A. SimpleFOAM + Frozen Blade</th>
+<th>B. SimpleFOAM + MRF</th>
+<th>C. PimpleFOAM + Frozen Blade</th>
+<th>D. PimpleFOAM + Sliding Mesh</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>inlet</td>
-<td>velocity</td>
+<td>Turbulence Model</td>
+<td>k-epsilon</td>
+<td>k-omega SST</td>
+<td>k-omega SST</td>
+<td>k-omega SST</td>
 </tr>
 <tr>
-<td>outlet</td>
-<td>pressure</td>
+<td>Rotor Rotational Speed [rpm]</td>
+<td>0</td>
+<td>13,000</td>
+<td>0</td>
+<td>13,000</td>
 </tr>
 <tr>
-<td>housing_domain:1</td>
+<td>Inlet BC</td>
+<td>velocity inlet</td>
+<td>mass flow inlet</td>
+<td>mass flow inlet</td>
+<td>mass flow inlet</td>
+</tr>
+<tr>
+<td>Outlet BC</td>
+<td>pressure outlet</td>
+<td>pressure outlet</td>
+<td>pressure outlet</td>
+<td>pressure outlet</td>
+</tr>
+<tr>
+<td>Blade BC</td>
+<td>noSlip wall</td>
+<td>MRFnoSlip wall</td>
+<td>noSlip wall</td>
+<td>movingWallVelocity</td>
+</tr>
+<tr>
+<td>Housing BC</td>
+<td>noSlip wall</td>
+<td>noSlip wall</td>
+<td>noSlip wall</td>
 <td>noSlip wall</td>
 </tr>
 <tr>
-<td>rotating_domain:1</td>
-<td>noSlip wall</td>
-</tr>
-<tr>
-<td>blade</td>
-<td>noSlip wall</td>
+<td>Rotor/Stator domain contact interface</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>movingWallSlipVelocity (with NCC)</td>
 </tr>
 </tbody></table>
-<p>Conserved mass flow</p>
+<h3 class="atx" id="residuals-a-simplefoam-steady-state-frozen-blade">Residuals: A. SimpleFOAM Steady-State Frozen Blade</h3>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-13-17-10-18-residual.svg"></p>
-<p><img alt="result_U_iso.png" src="portfolio_images/compressorSteady/screenshots/result_U_iso.png"></p>
-<p><img alt="result_U_clipside.png" src="portfolio_images/compressorSteady/screenshots/result_U_clipside.png"></p>
-<p><img alt="result_p_iso.png" src="portfolio_images/compressorSteady/screenshots/result_p_iso.png"></p>
-<p><img alt="result_p_clipside.png" src="portfolio_images/compressorSteady/screenshots/result_p_clipside.png"></p>
-<p><img alt="result_pU_iso.png" src="portfolio_images/compressorSteady/screenshots/result_pU_iso.png"></p>
-<h3 class="atx" id="b-simplefoam-steady-state-mrf-blade">B. SimpleFOAM Steady-State MRF Blade</h3>
-<table>
-<thead>
-<tr>
-<th>patch</th>
-<th>setup</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>inlet</td>
-<td>flowRateInletVelocity</td>
-</tr>
-<tr>
-<td>outlet</td>
-<td>pressure</td>
-</tr>
-<tr>
-<td>housing_domain:1</td>
-<td>noSlip wall</td>
-</tr>
-<tr>
-<td>rotating_domain:1</td>
-<td>noSlip wall</td>
-</tr>
-<tr>
-<td>blade</td>
-<td>MRFnoSlip wall</td>
-</tr>
-</tbody></table>
-<p><img alt="residual.svg" src="file:///D:/OpenFOAM/compressorMRF/postProcessing/residuals/0/residual.svg"></p>
-<p>Average pressure on inlet</p>
-<p>postProcess -func "patchAverage(patch=inlet,field=p)" -latestTime</p>
-<p>Average pressure on outlet</p>
-<p>postProcess -func "patchAverage(patch=outlet,field=p)" -latestTime</p>
-<p>Pressure Ratio = 101325 / 42252.7 =  2.398</p>
-<p><img alt="result_U_iso.png" src="portfolio_images/compressorMRF/screenshots/result_U_iso.png"></p>
-<p><img alt="result_U_clipside.png" src="portfolio_images/compressorMRF/screenshots/result_U_clipside.png"></p>
-<p><img alt="result_p_iso.png" src="portfolio_images/compressorMRF/screenshots/result_p_iso.png"></p>
-<p><img alt="result_p_clipside.png" src="portfolio_images/compressorMRF/screenshots/result_p_clipside.png"></p>
-<p><img alt="result_pU_iso.png" src="portfolio_images/compressorMRF/screenshots/result_pU_iso.png"></p>
-<h3 class="atx" id="c-pimplefoam-transient-frozen-blade">C. PimpleFOAM Transient Frozen Blade</h3>
-<table>
-<thead>
-<tr>
-<th>patch</th>
-<th>setup</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>inlet</td>
-<td>flowRateInletVelocity</td>
-</tr>
-<tr>
-<td>outlet</td>
-<td>pressure</td>
-</tr>
-<tr>
-<td>housing_domain:1</td>
-<td>noSlip wall</td>
-</tr>
-<tr>
-<td>rotating_domain:1</td>
-<td>noSlip wall</td>
-</tr>
-<tr>
-<td>blade</td>
-<td>MRFnoSlip wall</td>
-</tr>
-</tbody></table>
-<p><img alt="residual.svg" src="portfolio_images/%5CcompressorAMI%5CpostProcessing%5Cresiduals%5C0%5Cresidual.svg"></p>
-<p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-21-11-41-35-residual.svg"></p>
-<pre><code class="fenced-code-block">2.5284149089e-06    wall-volume-rotating_domain    9.717810e-01    5.118858e+00    2.929380e+00
-2.5284149089e-06    wall-volume-housing_domain    1.074556e-02    1.153011e+01    2.522031e+00
-2.5284149089e-06    blade    9.493493e-03    2.526799e+02    2.571927e+00</code></pre>
+<h3 class="atx" id="residuals-b-simplefoam-steady-state-mrf-blade">Residuals: B. SimpleFOAM Steady-State MRF Blade</h3>
+<p><img alt="residual.svg" src="portfolio_images/compressorMRF/postProcessing/residuals/0/residual.svg"></p>
+<h3 class="atx" id="residuals-c-pimplefoam-transient-frozen-blade">Residuals: C. PimpleFOAM Transient Frozen Blade</h3>
 <p><img alt="" src="portfolio_images%5Cembeded_images/2025-08-21-15-55-00-residual.svg"></p>
-<pre><code class="fenced-code-block">5.53173e-05       wall-volume-rotating_domain    1.308821e-01    2.461366e+01    1.263763e+01
-5.53173e-05       wall-volume-housing_domain    3.814961e-03    8.215194e+01    1.493292e+01
-5.53173e-05       blade    5.263252e-03    6.881828e+02    1.339458e+01</code></pre>
-<p>With boundary conditions specified to be WallFunction, not sure if it automically deals with y+ &lt;1, landing on the sub-viscous layer. Perhaps the reason for the divergence.</p>
-<p>Also adopted the AdjustTimeSteps and maxCo for stability</p>
-<h2 class="atx" id="d-pimplefoam-transient-ami-rotating-blade">D. PimpleFOAM Transient AMI Rotating Blade</h2>
-<h3 class="atx" id="1000-rpm">1000 RPM</h3>
-<p><img alt="" src="file:///home/wisely123/snap/marktext/11/.config/marktext/images/2025-08-22-13-00-17-residual.svg"></p>
-<pre><code class="fenced-code-block">0.000160389       wall-volume-rotating_domain    1.344095e-01    3.080218e+01    1.329108e+01
-0.000160389       wall-volume-housing_domain    3.103105e-03    9.233244e+01    1.613380e+01
-0.000160389       blade    1.361085e-02    1.057282e+03    1.565378e+01</code></pre>
-<p>Didn't work because using the conformal mesh (1 interface patch) without AMI. Without the AMI, mesh was trying to compute connectivity data from each rotating_domain rotation.</p>
-<p>The fix was getting rid of the share topology in SpaceClaim, two distinct surfaces to compute non-conformal mesh. Later applying AMI BC.</p>
-<h3 class="atx" id="130000-rpm">130000 RPM</h3>
-<p>Ran &gt; 20000 time steps, only saved selected times to reduce memory</p>
-<pre><code class="fenced-code-block">#!/bin/sh
-
-## Create list of times to keep (every 5th)
-#ls processor0/ | grep -E '^[0-9]' | sort -n | awk 'NR % 25 == 1' &gt; keep_times.txt
-
-# Reconstruct only selected times
-while read time; do
-    echo "Reconstructing time: $time"
-    reconstructPar -time "$time"
-done &lt; keep_times.txt
-
-foamToVTK
-## Remove time directories from processor directories that are NOT in keep_times.txt
-#echo "Removing unwanted time directories from processor directories..."
-
-## Get all time directories in processor0
-#ls processor0/ | grep -E '^[0-9]' | sort -n &gt; all_times.txt
-
-## Use awk to find times to delete (most reliable method)
-#awk 'NR==FNR{a[$0];next} !($0 in a)' keep_times.txt all_times.txt &gt; times_to_delete.txt
-
-## Check if we found times to delete
-#if [ -s times_to_delete.txt ]; then
-#    echo "Found $(wc -l &lt; times_to_delete.txt) time directories to delete"
-#    
-#    # Remove the unwanted time directories from all processor directories
-#    while read time; do
-#        echo "Removing time: $time from processor directories"
-#        rm -rf processor*/"$time"
-#    done &lt; times_to_delete.txt
-#else
-#    echo "No time directories to delete"
-#fi
-
-### Clean up temporary files
-##rm -f all_times.txt times_to_delete.txt
-
-##echo "Cleanup complete!"</code></pre>
-<p>Many interuptions and proceed, but no problem. Healthy residuals at first with maxCo = 1.</p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0/residual.svg"></p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/4.62408e-05/residual.svg"></p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0.000118116/residual.svg"></p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0.000170282/residual.svg"></p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0.000179779/residual.svg"></p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0.000187521879/residual.svg"></p>
-<p>At t = 1.08624e-05</p>
-<p><img alt="runaway_step1.png" src="portfolio_images/compressorAMI/screenshots/runaway_step1.png"></p>
-<p>At t = 0.0001850449</p>
-<p><img alt="runaway_step52.png" src="portfolio_images/compressorAMI/screenshots/runaway_step52.png"></p>
-<p>0.000174183s for half rotation</p>
-<p><img alt="residual.svg" src="portfolio_images/compressorAMI/postProcessing/residuals/0.0001881026/residual.svg"></p>
-<div style="text-align: center; margin: 2rem 0;">
-  <h3 style="color: #ffffff; margin-bottom: 2rem;">CFD Simulation Results - AMI Rotating Blade</h3>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto;">
-    
-    <!-- Velocity Field Results -->
-    <div style="text-align: center;">
-      <h4 style="color: #ffffff; margin-bottom: 1rem;">Velocity Field</h4>
-      
-      <div style="margin-bottom: 2rem;">
-        <img src="portfolio_images/combined_U_iso.gif" 
-             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(255,255,255,0.1);" 
-             alt="Velocity Field - Isometric View">
-        <p style="margin-top: 0.5rem; font-style: italic; color: #cccccc;">Isometric View</p>
-      </div>
-      
-      <div>
-        <img src="portfolio_images/combined_U_top.gif" 
-             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(255,255,255,0.1);" 
-             alt="Velocity Field - Top View">
-        <p style="margin-top: 0.5rem; font-style: italic; color: #cccccc;">Top View</p>
-      </div>
-    </div>
-    
-    <!-- Pressure Field Results -->
-    <div style="text-align: center;">
-      <h4 style="color: #ffffff; margin-bottom: 1rem;">Pressure Field</h4>
-      
-      <div style="margin-bottom: 2rem;">
-        <img src="portfolio_images/combined_p_iso.gif" 
-             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(255,255,255,0.1);" 
-             alt="Pressure Field - Isometric View">
-        <p style="margin-top: 0.5rem; font-style: italic; color: #cccccc;">Isometric View</p>
-      </div>
-      
-      <div>
-        <img src="portfolio_images/combined_p_top.gif" 
-             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(255,255,255,0.1);" 
-             alt="Pressure Field - Top View">
-        <p style="margin-top: 0.5rem; font-style: italic; color: #cccccc;">Top View</p>
-      </div>
-    </div>
-    
-  </div>
-  <p style="margin-top: 2rem; font-style: italic; color: #cccccc;">AMI Rotating Blade Simulation - Half Rotation (0.000174183s)</p>
-</div>
-
-
+<h2 class="atx" id="residuals-d-pimplefoam-transient-ami-rotating-blade">Residuals: D. PimpleFOAM Transient AMI Rotating Blade</h2>
+<p><img alt="residual.svg" src="file:///D:/OpenFOAM/compressorAMI/postProcessing/residuals/0/residual.svg"></p>
+<h2 class="atx" id="5-results">5. Results</h2>
+<h3 class="atx" id="flow-visualisation">Flow Visualisation</h3>
+<p>Below are the velocity contours of the MRF simulation (left) vs the sliding mesh simulation (right). While the MRF case shows a smoothed, time-averaged flow, the sliding mesh resolves unsteady blade-passing wakes and secondary flow structures, producing a more detailed velocity distribution at the rotor–stator interface.</p>
+<p><img alt="combined_U_iso.gif" src="file:///D:/OpenFOAM/portfolio_images/combined_U_iso.gif"></p>
+<p><img alt="combined_U_top.gif" src="portfolio_images%5Ccombined_U_top.gif"></p>
+<p>Below are the pressure contours of the MRF simulation (left) vs the sliding mesh simulation (right). The sliding-mesh simulation reveals periodic fluctuations of pressure, which is developed by the frequency of the rotor rotation and its blade-passing harmonics.</p>
+<p><img alt="combined_p_iso.gif" src="file:///D:/OpenFOAM/portfolio_images/combined_p_iso.gif"></p>
+<p><img alt="combined_p_top.gif" src="file:///D:/OpenFOAM/portfolio_images/combined_p_top.gif"></p>
+<h3 class="atx" id="compression-ratio">Compression Ratio</h3>
+<p>The compression ratio of the turbocharger compressor stage is characterised by the ratio of outlet to inlet total pressures. The plot below indicates the pressure boost developing as simulation progresses. Due to limited computational resourses, it is apparent that the sliding mesh has yet to reach its steady state in comparison to the MRF simulation.</p>
+<p><img alt="PR.svg" src="portfolio_images%5CPR.svg"></p>
+<h3 class="atx" id="q-criterion">Q-criterion</h3>
+<p>The development of vortex structures from the sliding-mesh simulation using a Q-criterion iso-surface at 1×10⁸. This highlights the initiation of tip-leakage vortices and wake interactions downstream of the impeller.</p>
+<p><img alt="speedup_Q_iso.gif" src="file:///D:/OpenFOAM/portfolio_images/compressorAMI/speedup_Q_iso.gif"></p>
 </article>
 </body>
 </html>
