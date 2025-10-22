@@ -1263,18 +1263,18 @@ pre[class*="language-"] {
 </ul>
 <h2 class="atx" id="2-geometry">2. Geometry</h2>
 <p>The intake manifold CAD used for the analysis is shown below. </p>
-<p><img alt="intake.png" src="portfolio_images_intake%5Cintake.png"></p>
+<p><img alt="intake.png" src="portfolio_images_intake/intake.png"></p>
 <p>The fluid domain, including the intake cone and separator, was extracted, while downstream components such as the 45° elbows and injector collars were omitted for simplicity. The extracted geometry was then repaired by removing duplicate or split edges and closing small gaps to ensure a watertight surface for meshing.</p>
-<p><img alt="intake_w_fluiddomain.png" src="portfolio_images_intake%5Cintake_w_fluiddomain.png"></p>
+<p><img alt="intake_w_fluiddomain.png" src="portfolio_images_intake/intake_w_fluiddomain.png"></p>
 <p>The four outlets, named <em>outlet1</em> through <em>outlet4</em>, are arranged sequentially along the positive <em>z</em>-direction.</p>
-<p><img alt="intake_fluiddomain.png" src="portfolio_images_intake%5Cintake_fluiddomain.png"></p>
-<p><img alt="intake_fluiddomain_paraview.png" src="portfolio_images_intake%5Cintake_fluiddomain_paraview.png"></p>
-<p><img alt="intake_fluiddomain_top_paraview.png" src="portfolio_images_intake%5Cintake_fluiddomain_top_paraview.png"></p>
+<p><img alt="intake_fluiddomain.png" src="portfolio_images_intake/intake_fluiddomain.png"></p>
+<p><img alt="intake_fluiddomain_paraview.png" src="portfolio_images_intake/intake_fluiddomain_paraview.png"></p>
+<p><img alt="intake_fluiddomain_top_paraview.png" src="portfolio_images_intake/intake_fluiddomain_top_paraview.png"></p>
 <h2 class="atx" id="3-mesh">3. Mesh</h2>
 <p>The fluid domain was discretised using a hybrid mesh of 12 layers of prismatic cells near solid boundaries, transitioning into an unstructured tetrahedral core mesh. This yielded an average y⁺ ≈ 1 in the transient cases, placing wall resolution within the viscous sub-layer for both DES and RANS turbulence models to directly resolve near-wall velocity gradients without relying on wall functions. The final mesh contained 2.3 × 10⁶ cells.</p>
-<p><img alt="intake_fluiddomain_mesh_paraview.png" src="portfolio_images_intake%5Cintake_fluiddomain_mesh_paraview.png"></p>
-<p><img alt="intake_fluiddomain_mesh_top_paraview.png" src="portfolio_images_intake%5Cintake_fluiddomain_mesh_top_paraview.png"></p>
-<p><img alt="intake_fluiddomain_mesh_layers_paraview.png" src="portfolio_images_intake%5Cintake_fluiddomain_mesh_layers_paraview.png"></p>
+<p><img alt="intake_fluiddomain_mesh_paraview.png" src="portfolio_images_intake/intake_fluiddomain_mesh_paraview.png"></p>
+<p><img alt="intake_fluiddomain_mesh_top_paraview.png" src="portfolio_images_intake/intake_fluiddomain_mesh_top_paraview.png"></p>
+<p><img alt="intake_fluiddomain_mesh_layers_paraview.png" src="portfolio_images_intake/intake_fluiddomain_mesh_layers_paraview.png"></p>
 <h2 class="atx" id="4-openfoam-setup">4. OpenFOAM setup</h2>
 <p>Two simulations were performed using identical inputs, employing the DDES and k-omega SST turbulence models for comparison.</p>
 <table>
@@ -1361,20 +1361,20 @@ echo "Outlet data extraction complete"</code></pre>
 <h3 class="atx" id="flow-visualisation">Flow Visualisation</h3>
 <p>Comparison of instantaneous velocity and pressure contours between RANS (left) and DDES (right). The DDES simulation resolves finer vortical structures and stronger pressure gradients near the splitter.</p>
 <p><strong>Velocity Contour</strong></p>
-<p><img alt="combined_U_top.gif" src="portfolio_images_intake%5Ccombined_U_top.gif"></p>
+<p><img alt="combined_U_top.gif" src="portfolio_images_intake/combined_U_top.gif"></p>
 <p><strong>Pressure Contour</strong></p>
-<p><img alt="combined_p_top.gif" src="portfolio_images_intake%5Ccombined_p_top.gif"></p>
+<p><img alt="combined_p_top.gif" src="portfolio_images_intake/combined_p_top.gif"></p>
 <p><strong>Velocity Streamline and Vorticity</strong></p>
 <p>Upstream of the splitter, both models generate a symmetric counter-rotating vortex pair (Dean-type) associated with boundary-layer turning and leading-edge horseshoe motion. The y-normal vorticity contour clearly illustrates these structures. In the DDES simulation, the vortices exhibit mild temporal asymmetry and fluctuating strength, while the dividing shear layer between them appears more distinct than in the RANS solution.</p>
 <p><strong>k-omega SST</strong></p>
-<p><img alt="steamline.png" src="intakeTransient%5Csteamline.png"></p>
-<p><img alt="vorticity.png" src="intakeTransient%5Cvorticity.png"></p>
+<p><img alt="steamline.png" src="intakeTransient/steamline.png"></p>
+<p><img alt="vorticity.png" src="intakeTransient/vorticity.png"></p>
 <p><strong>DDES</strong></p>
-<p><img alt="streamline.png" src="intakeTransientles%5Cstreamline.png"></p>
-<p><img alt="vorticity.png" src="intakeTransientles%5Cvorticity.png"></p>
+<p><img alt="streamline.png" src="intakeTransientles/streamline.png"></p>
+<p><img alt="vorticity.png" src="intakeTransientles/vorticity.png"></p>
 <h3 class="atx" id="outlet-flow-rate-distribution">Outlet Flow Rate Distribution</h3>
 <p>The outlet mass flow rate plot further highlights this behaviour. In the RANS solution, outlet flow rates remain relatively uniform, while the DDES simulation shows a larger imbalance, particularly between the two inner outlets, indicating that the unsteady turbulence resolution captures more pronounced secondary flow interactions and cross-stream pressure gradients within the manifold.</p>
-<p><img alt="phi.svg" src="portfolio_images_intake%5Cphi.svg"></p>
+<p><img alt="phi.svg" src="portfolio_images_intake/phi.svg"></p>
 <h3 class="atx" id="total-pressure-recovery">Total Pressure Recovery</h3>
 <p>Total pressure ratios at the four outlets drop through the manifold due to losses, as expected. DDES exhibits consistently higher ratios (0.982–0.987) than k-ω SST (≈0.974–0.975), implying lower total-pressure loss. Outlets 2 and 3 recover slightly more total pressure than 1 and 4, reflecting branch-to-branch asymmetry driven by secondary flows. These results are consistent with the contour observations, DDES maintains stronger coherent vortical structures with less artificial diffusion, leading to improved pressure recovery.</p>
 <table>
@@ -1409,9 +1409,9 @@ echo "Outlet data extraction complete"</code></pre>
 <h3 class="atx" id="q-criterion">Q criterion</h3>
 <p>The Q-criterion iso-surfaces (Q = 5 × 10⁵) coloured by vorticity magnitude illustrate vortex structures within the manifold. The k-omega SST model predicts smooth, steady flow with limited small-scale content, whereas the DDES simulation reveals finer, more fragmented vortices and mild asymmetry in the diffuser region. These differences highlight the higher resolution of unsteady turbulent structures achieved by DDES, contributing to the outlet flow imbalance and total-pressure loss differences observed.</p>
 <p><strong>k-omega SST</strong></p>
-<p><img alt="Q_iso.png" src="intakeTransient%5CQ_iso.png"></p>
+<p><img alt="Q_iso.png" src="intakeTransient/Q_iso.png"></p>
 <p><strong>DDES</strong></p>
-<p><img alt="Q_iso.png" src="intakeTransientles%5CQ_iso.png"></p>
+<p><img alt="Q_iso.png" src="intakeTransientles/Q_iso.png"></p>
 </article>
 </body>
 </html>
