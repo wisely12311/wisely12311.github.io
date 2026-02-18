@@ -1248,50 +1248,62 @@ pre[class*="language-"] {
   <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
 </head>
 <body style="background-color: #c0c0c0;">
-  <article class="markdown-body"><h1 class="atx" id="cfd-simulation-of-c42">CFD simulation of c42</h1>
-<h2 class="atx" id="1-objective">1. Objective</h2>
-<p>This project evaluates the aerodynamic performance of the pre-launched c42 F1 car model. It was noted that the detail of the CAD model is compromised, some features of the car are likely to be preliminary, therefore does not fully represent the on-track configuration. However, it provides a baseline for aerodynamic characterisation and performance analysis.</p>
+  <article class="markdown-body"><h1 class="atx" id="multi-region-conjugate-heat-transfer-cht-analysis-of-high-pressure-leakage">Multi-Region Conjugate Heat Transfer (CHT) Analysis of High-Pressure Leakage</h1>
+<p>Disclaimer: This project serves as a methodological demonstration using generic geometries, materials, and hypothetical fluids. It does not reflect specific proprietary information belonging to any client or company.</p>
+<h2 class="atx" id="1-objective-andamp-key-results">1. Objective &amp; Key Results</h2>
+<p>To evaluate the integrity of valve body and piping materials under high-pressure leak conditions. The study identifies the potential for Minimum Design Temperature (MDT) exceedance caused by a high-pressure fluid leak across the seat of a closed control valve.</p>
+<p>A Conjugate Heat Transfer (CHT) analysis was performed in OpenFOAM. The model predicts metal temperatures across the leaking valve body, the actuator, and adjacent piping.</p>
+<h3 class="atx" id="key-results">Key Results</h3>
+<ul>
+<li><p>The simulation quantified the extent of MDT exceedance, revealing that the -50°C iso-surface extends&nbsp;10.3 m downstream of the valve seat, identifying the specific piping section at risk of brittle fracture.</p>
+</li>
+<li><p>Significant&nbsp;through-thickness thermal gradients&nbsp;were captured in the solid domain, where the inner wall approaches cryogenic fluid temperatures while the outer wall remains near ambient, highlighting the potential for severe thermal stress in thin-walled pipe sections.</p>
+</li>
+<li><p>The hybrid conformal meshing interfaces successfully resolved the multi-region CHT physics, capturing important flow structures (recirculation and shear layers) with the computational efficiency required for solid-energy iterations.</p>
+</li>
+</ul>
 <h2 class="atx" id="2-geometry">2. Geometry</h2>
-<p>The final geometry of the c42 used for this CFD analysis is shown below. The bounding box of the model consist of the following dimension: X = 1.66034m (W); Y = 0.910304m (H); Z = 4.63171m (L).</p>
-<p><img alt="c42_final_iso.png" src="portfolio_images_c42/CAD/c42_final_iso.png"></p>
-<p><img alt="c42_final_front.png" src="portfolio_images_c42/CAD/c42_final_front.png"></p>
-<p><img alt="c42_final_top.png" src="portfolio_images_c42/CAD/c42_final_top.png"></p>
-<p><img alt="c42_final_side.png" src="portfolio_images_c42/CAD/c42_final_side.png"></p>
-<p>The original CAD was repaired and simplified prior to shrink-wrapping to ensure watertightness (shown in the below images). Defects such as split or duplicate edges and small gaps were corrected, and dents on the FIA camera pods and upper T-camera fairings were smoothed. Simplifications included:</p>
+<p>The multi-region model comprises eight distinct regions: the fluid domain and seven solid regions (valve body, gaskets, actuator, flanges, and piping). Material properties are assigned individually to each solid region.</p>
+<p>The domain includes a downstream bend and sufficient straight length to capture steady-state flow reattachment and the full extent of potential MDT exceedance. A short upstream section is included to assess thermal conduction (cold creep) against the flow direction.</p>
+<p>The actuator is modeled as a lumped-parameter cuboid. This simplification reduces meshing complexity and solver overhead while maintaining the exact thermal mass and contact surface area (within 10% tolerance) of the original geometry to ensure accurate thermal inertia.</p>
+<p><img alt="prelim_trace_isoview_annotated.png" src="portfolio_images_ssiv/prelim_trace_isoview_annotated.png"></p>
+<p>CHT is explicitly modeled via thermal coupling at all fluid-solid interfaces. Special attention was paid to the valve gaskets, they comprise of thin metallic layers with distinct material properties bridging the valve body and piping.</p>
+<p><img alt="prelim_trace_frontview_clip_zoom_BC_annotated.png" src="portfolio_images_ssiv/prelim_trace_frontview_clip_zoom_BC_annotated.png"></p>
+<p>The leak is idealised as a semi-open valve seat, as shown below. The inlet consists of a vertical chord-bounded area (0.047939 m2), and the outlet is modelled as a full pipe cross-section to simulate an unpressurised downstream release.</p>
+<p><img alt="prelim_trace_isoview_inlet_annotated.png" src="portfolio_images_ssiv/prelim_trace_isoview_inlet_annotated.png"></p>
+<p><img alt="prelim_trace_sideview_inlet_annotated.png" src="portfolio_images_ssiv/prelim_trace_sideview_inlet_annotated.png"></p>
+<h2 class="atx" id="3-mesh">3. Mesh</h2>
+<p>A hybrid conformal mesh with 5.1 × 10⁶ cells (including fluid and solid regions) was generated to balance accuracy and computational efficiency.</p>
+<p><strong>Fluid Domain:</strong>&nbsp;The fluid region utilises a hybrid topology. A block-structured fully hexahedral mesh was deemed overly time consuming to construct due to the surface split created by the chord-shaped inlet, disturbing the O-grid topology at pipe cross-section. Instead, a tetrahedral core is used, with 12 prism layers near solid boundaries to resolve the boundary layer. With the selected working fluid, the fluid mesh yielded an average y⁺ ≈ 1200, placing the near-wall treatment within the log-law region, employing wall-function-based turbulence modelling.</p>
+<p><strong>Solid Domains:</strong>&nbsp;Solid regions are primarily discretised with hexahedral cells to align with heat flux directions and improve solver convergence. A small transition zone above the inlet uses tetrahedral cells to accommodate the fluid inlet topology. Gaskets are meshed with hexahedral cells, ensuring at least one cell layer in the through-thickness.</p>
+<p><img alt="mesh_iso.png" src="portfolio_images_ssiv/mesh_iso.png"></p>
+<p><img alt="mesh_iso2.png" src="portfolio_images_ssiv/mesh_iso2.png"></p>
+<p><img alt="mesh_fluid_outlet.png" src="portfolio_images_ssiv/mesh_fluid_outlet.png"></p>
+<p><img alt="mesh_fluid_inlet.png" src="portfolio_images_ssiv/mesh_fluid_inlet.png"></p>
+<p><img alt="mesh_gasket_iso.png" src="portfolio_images_ssiv/mesh_gasket_iso.png"></p>
+<p><img alt="mesh_gasket_clip.png" src="portfolio_images_ssiv/mesh_gasket_clip.png"></p>
+<p><img alt="mesh_front_clip.png" src="portfolio_images_ssiv/mesh_front_clip.png"></p>
+<h2 class="atx" id="4-cfd-setup">4. CFD Setup</h2>
 <ul>
-<li><p>Closing cockpit openings (driver and seat removed)</p>
+<li><p>Solver:&nbsp;Steady-state RANS simulation (chtMultiRegionSimpleFoam).</p>
 </li>
-<li><p>Replacing detailed wheels with cylinders of equivalent size and front-wheel camber (3.14deg)</p>
+<li><p>Turbulence: k−ω&nbsp;SST.</p>
 </li>
-<li><p>Blocking engine inlets, brake ducts, and cooling passages using internal caps placed downstream to minimise external flow interference</p>
+<li><p>Energy (Fluid):&nbsp;Solved using&nbsp;sensibleEnthalpy. The fluid is modelled as an incompressible liquid (constant density) at a transport temperature of -162°C.</p>
+</li>
+<li><p>Energy (Solid):&nbsp;Solved using&nbsp;sensibleInternalEnergy&nbsp;with Laplacian conduction.</p>
+</li>
+<li><p>Gravity:&nbsp;Applied in the negative z-axis (−9.81ms-2).</p>
+</li>
+<li><p>Coupling: coupledTemperature&nbsp;boundary conditions enforce temperature and heat flux continuity (conjugate heat transfer) between fluid and solid regions.</p>
+</li>
+<li><p>Environment:&nbsp;A constant ambient sea temperature is applied to external walls.</p>
+</li>
+<li><p>Pipe Ends:&nbsp;zeroGradient&nbsp;(adiabatic) conditions are applied to the upstream and downstream pipe cross-sections to mimic a continuous, insulated pipeline.</p>
 </li>
 </ul>
-<p><img alt="c42_fix_iso.png" src="portfolio_images_c42/CAD/c42_fix_iso.png"></p>
-<p><img alt="c42_fix_front.png" src="portfolio_images_c42/CAD/c42_fix_front.png"></p>
-<p><img alt="c42_fix_top.png" src="portfolio_images_c42/CAD/c42_fix_top.png"></p>
-<p><img alt="c42_fix_side.png" src="portfolio_images_c42/CAD/c42_fix_side.png"></p>
-<h2 class="atx" id="3-meshing">3. Meshing</h2>
-<p>A half-model fluid domain was used with a symmetry plane along YZ to reduce computational cost. The external flow volume was parameterised from the STL bounding box with the dimensions below to mitigate blockage effects and capture the full wake. Tire patches of 0.005m were implemented to improve&nbsp;ground-contact representation and avoid degenerate near-ground cells. </p>
-<p><img alt="mesh_iso_noedge.png" src="portfolio_images_c42/mesh_iso_noedge_annotated.png"></p>
-<p>A cut-cell body-fitted mesh was generated with <em>snappyHexMesh</em>.</p>
-<ul>
-<li><p>Surface refinement: level 7 globally, with the front and rear wings refined to level 8</p>
-</li>
-<li><p>Refinement box: enforced level 4 within [X,Y,Z] = [W, 2H, 3L]</p>
-</li>
-<li><p>Distance-based refinement: levels 7, 6, 5 at 0.05 m, 0.10 m, and 0.20 m from the surface</p>
-</li>
-<li><p>Boundary layers: 3 prism layers on aerodynamic surfaces, achieving an average y⁺ ≈ 100, resolving the log-law region suitable for wall-function modelling</p>
-</li>
-</ul>
-<p><img alt="mesh_iso.png" src="portfolio_images_c42/mesh_iso.png"></p>
-<p><img alt="mesh_zoom_iso.png" src="portfolio_images_c42/mesh_zoom_iso.png"></p>
-<p><img alt="mesh_zoom_front.png" src="portfolio_images_c42/mesh_zoom_front.png"></p>
-<p><img alt="mesh_zoom_top.png" src="portfolio_images_c42/mesh_zoom_top.png"></p>
-<p><img alt="mesh_zoom_side.png" src="portfolio_images_c42/mesh_zoom_side.png"></p>
-<p><img alt="mesh_zoom_zoom.png" src="portfolio_images_c42/mesh_zoom_zoom.png"></p>
-<h2 class="atx" id="4-simulation-setup">4. Simulation Setup</h2>
-<p>Steady RANS simulations were performed using SimpleFOAM with the k–omega SST with the boundary conditions specified below to mimic on-track conditions.</p>
+<p>Detail boundary conditions enforced are found in the below schematic and table. Notably, a constant ambient sea temperature boundary condition (blue) is applied on most solid domain walls, zeroGradient temperature boundary conditions (yellow) were applied to mimic continuous adiabatic thermal path for ongoing pipelines. </p>
+<p><img alt="" src="portfolio_images_ssiv/BC_annotated.png"></p>
 <table>
 <thead>
 <tr>
@@ -1300,255 +1312,134 @@ pre[class*="language-"] {
 </tr>
 </thead>
 <tbody><tr>
-<td>Inlet</td>
-<td>Fixed velocity = 56 m/s</td>
+<td>fluid inlet</td>
+<td>U: flowRateInletVelocity = 726 kg/s</td>
 </tr>
 <tr>
-<td>Outlet</td>
-<td>Fixed pressure = 0 Pa</td>
+<td></td>
+<td>T: fixed temperature = 111.15 K = -162 degC</td>
 </tr>
 <tr>
-<td>Ground</td>
-<td>MovingWallVelocity (56 m/s)</td>
+<td>fluid outlet</td>
+<td>p: fixed pressure =&nbsp;101325 Pa</td>
 </tr>
 <tr>
-<td>Wheels</td>
-<td>RotatingWallVelocity (56 m/s equivalent)</td>
+<td></td>
+<td>U: pressureInletOutletVelocity</td>
 </tr>
 <tr>
-<td>Sidewalls</td>
-<td>Slip</td>
+<td></td>
+<td>T: inletOutlet</td>
 </tr>
 <tr>
-<td>Symmetry plane</td>
-<td>Symmetry</td>
+<td>fluid-solid interfaces</td>
+<td>p: zeroGradient</td>
 </tr>
 <tr>
-<td>c42 body, front &amp; rear wings</td>
-<td>noSlip</td>
+<td></td>
+<td>U: noSlip</td>
+</tr>
+<tr>
+<td></td>
+<td>T: coupledTemperature</td>
+</tr>
+<tr>
+<td>solid walls</td>
+<td>T: fixed temperature = 277.15 K = 4 degC (sea&nbsp;ambient temperature)</td>
+</tr>
+<tr>
+<td>solid walls at pipe cross section</td>
+<td>T: zeroGradient (adiabatic)</td>
 </tr>
 </tbody></table>
-<p><strong>Residuals</strong></p>
-<p><img alt="static_residual.svg" src="portfolio_images_c42/static_residual.svg"></p>
-<h2 class="atx" id="5-results---performance-full-model">5. Results - Performance (full-model)</h2>
-<h3 class="atx" id="forces">Forces</h3>
+<p>Solid material properites are found in the table below.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Fx</th>
-<th>Fy</th>
-<th>Fz</th>
+<th>Component</th>
+<th>Material</th>
+<th>Density [kg/m3]</th>
+<th>Heat Capacity [J/kg-K]</th>
+<th>Thermal Conductivity [W/m-K]</th>
+<th>Minimum Design Temperature [°C]</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Pressure</td>
-<td>-</td>
-<td>-4983.64</td>
-<td>1800.854</td>
+<td>Valve Body</td>
+<td>Carbon Steel #1</td>
+<td>7850</td>
+<td>470</td>
+<td>45</td>
+<td>-50</td>
 </tr>
 <tr>
-<td>Friction</td>
-<td>-</td>
-<td>8.6602</td>
-<td>131.7776</td>
+<td>Valve Cladding</td>
+<td>Carbon Steel #2</td>
+<td>8440</td>
+<td>407</td>
+<td>9.8</td>
+<td>-50</td>
 </tr>
 <tr>
-<td>Total</td>
-<td>-</td>
-<td>-4974.98</td>
-<td>1932.63</td>
+<td>Piping</td>
+<td>Carbon Steel&nbsp;#1</td>
+<td>7850</td>
+<td>470</td>
+<td>45</td>
+<td>-50</td>
 </tr>
 </tbody></table>
-<p><strong>Frontwing</strong></p>
+<p>Fluid material properties at its transport temperature -162 degC are found in the table below.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Fx</th>
-<th>Fy</th>
-<th>Fz</th>
+<th>Component</th>
+<th>Material</th>
+<th>Molar Weight [kg/mol]</th>
+<th>Density [kg/m3]</th>
+<th>Heat Capacity [J/kg-K]</th>
+<th>Dynamic Viscosity [Pa-s]</th>
+<th>Pr Number</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Pressure</td>
-<td>-</td>
-<td>-1615.36</td>
-<td>162.974</td>
-</tr>
-<tr>
-<td>Friction</td>
-<td>-</td>
-<td>1.212892</td>
-<td>11.3557</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>-</td>
-<td>-1614.146</td>
-<td>174.3298</td>
+<td>Fluid</td>
+<td>Liquefied Natural Gas (LNG)</td>
+<td>16.04</td>
+<td>430</td>
+<td>3300</td>
+<td>1e-4</td>
+<td>2.75</td>
 </tr>
 </tbody></table>
-<p><strong>Rearwing</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Fx</th>
-<th>Fy</th>
-<th>Fz</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Pressure</td>
-<td>-</td>
-<td>-1407.708</td>
-<td>338.538</td>
-</tr>
-<tr>
-<td>Friction</td>
-<td>-</td>
-<td>1.528626</td>
-<td>9.76412</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>-</td>
-<td>-1406.18</td>
-<td>348.302</td>
-</tr>
-</tbody></table>
-<h3 class="atx" id="moment">Moment</h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Mx</th>
-<th>My</th>
-<th>Mz</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Pressure</td>
-<td>3434.64</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Friction</td>
-<td>-20.4434</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>3414.2</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p><strong>Frontwing</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Mx</th>
-<th>My</th>
-<th>Mz</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Pressure</td>
-<td>-3266.74</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Friction</td>
-<td>-1.117758</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>-3267.86</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p><strong>Rearwing</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Mx</th>
-<th>My</th>
-<th>Mz</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Pressure</td>
-<td>2854.7</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Friction</td>
-<td>-2.34288</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>2852.36</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p><strong>Aerodynamic Coefficient</strong></p>
-<p>With reference to a projected frontal area of 1.1023m², the computed coefficients were:</p>
-<ul>
-<li><p>Drag Coefficient  (Cd) = 0.927</p>
-</li>
-<li><p>Lift Coefficient (Cl) = -2.350</p>
-</li>
-</ul>
-<h2 class="atx" id="6-results---drag-analysis">6. Results - Drag Analysis</h2>
-<h3 class="atx" id="3d-pressure-clouds">3D Pressure Clouds</h3>
-<p>Underpressure zones are illustrated below with isocontours of Cp = 0. </p>
-<p><img alt="cp_cloud_iso.png" src="portfolio_images_c42/cp_cloud_iso.png"></p>
-<p><img alt="cp_cloud_front.png" src="portfolio_images_c42/cp_cloud_front.png"></p>
-<p><img alt="cp_cloud_top.png" src="portfolio_images_c42/cp_cloud_top.png"></p>
-<p><img alt="cp_cloud_side.png" src="portfolio_images_c42/cp_cloud_side.png"></p>
-<p><img alt="cp_cloud_bottom.png" src="portfolio_images_c42/cp_cloud_bottom.png"></p>
-<h3 class="atx" id="surface-pressure">Surface Pressure</h3>
-<p>Pressure contours on the c42 surfaces are illustrated below in the form of Cp.</p>
-<p><img alt="cp_iso.png" src="portfolio_images_c42/cp_iso.png"></p>
-<p><img alt="cp_front.png" src="portfolio_images_c42/cp_front.png"></p>
-<p><img alt="cp_top.png" src="portfolio_images_c42/cp_top.png"></p>
-<p><img alt="cp_side.png" src="portfolio_images_c42/cp_side.png"></p>
-<p><img alt="cp_bottom.png" src="portfolio_images_c42/cp_bottom.png"></p>
-<h3 class="atx" id="surface-friction">Surface Friction</h3>
-<p>Surface friction on the c42 surfaces are illustrated below in the form of wall shear stress.</p>
-<p><img alt="shear_iso.png" src="portfolio_images_c42/shear_iso.png"></p>
-<p><img alt="shear_front.png" src="portfolio_images_c42/shear_front.png"></p>
-<p><img alt="shear_top.png" src="portfolio_images_c42/shear_top.png"></p>
-<p><img alt="shear_side.png" src="portfolio_images_c42/shear_side.png"></p>
-<p><img alt="shear_bottom.png" src="portfolio_images_c42/shear_bottom.png"></p>
-<h2 class="atx" id="7-results---flow-analysis">7. Results - Flow Analysis</h2>
-<h3 class="atx" id="vertical-streamlines">Vertical Streamlines</h3>
-<p><img alt="streamline_vertical_iso.png" src="portfolio_images_c42/streamline_vertical_iso.png"></p>
-<p><img alt="streamline_vertical_front.png" src="portfolio_images_c42/streamline_vertical_front.png"></p>
-<p><img alt="streamline_vertical_top.png" src="portfolio_images_c42/streamline_vertical_top.png"></p>
-<p><img alt="streamline_vertical_side.png" src="portfolio_images_c42/streamline_vertical_side.png"></p>
-<h3 class="atx" id="horizontal-streamlines">Horizontal Streamlines</h3>
-<p><img alt="streamline_horizontal_iso.png" src="portfolio_images_c42/streamline_horizontal_iso.png"></p>
-<p><img alt="streamline_horizontal_front.png" src="portfolio_images_c42/streamline_horizontal_front.png"></p>
-<p><img alt="streamline_horizontal_top.png" src="portfolio_images_c42/streamline_horizontal_top.png"></p>
-<p><img alt="streamline_horizontal_side.png" src="portfolio_images_c42/streamline_horizontal_side.png"></p>
-<h3 class="atx" id="pressure-slice-plane">Pressure Slice Plane</h3>
-<p>Animation below deomstrate pressure contours plotted on a slice, sweeping along the entire car length.</p>
-<p><img alt="cp_sweep.gif" src="portfolio_images_c42/cp_sweep.gif"></p>
+<p>Residuals for velocities, pressure and energy were converged to&nbsp;1e−6.</p>
+<h2 class="atx" id="5-results">5. Results</h2>
+<p>Temperature probes were placed at 12 locations axial along the pipeline solid domain to monitor their temperature. At each location, 12 individual points were monitored, at the inner surface, mid through-thickness and outer surface of the solid, as seen below. The primary failure criterion is the mid-wall temperature dropping below the MDT (-50 degC).</p>
+<p><img alt="mp.png" src="portfolio_images_ssiv/mp.png"></p>
+<p><img alt="mp2.png" src="portfolio_images_ssiv/mp2.png"></p>
+<h3 class="atx" id="flow-visualisation">Flow Visualisation</h3>
+<h4 class="atx" id="temperature-contour">Temperature Contour</h4>
+<p>The YZ temperature contour represents the geometric center-plane of the pipe. Due to the off-center alignment of the valve seat (inlet), this plane captures the mixing region rather than the core flow. Consequently, the minimum displayed temperature on this plane is -142.5 degC. The full inlet temperature of -162 degC is captured in the XY plane, which intersects the valve seat directly.</p>
+<p>The fluid enters at -162 degC. Upon passing the valve seat, the fluid extracts heat from the pipe walls, rapidly rising to ambient sea temperature after the first downstream bend.</p>
+<p>A significant thermal gradient exists through the pipe thickness (4 degC at the outer wall vs. near-fluid temperature at the inner wall). This gradient is most severe in thin-walled sections near the inlet, presenting the highest risk of fracture due to MDT exceedance.</p>
+<p><img alt="T_slice.png" src="portfolio_images_ssiv/results/T_slice.png"></p>
+<p><img alt="T_slice_zoom.png" src="portfolio_images_ssiv/results/T_slice_zoom.png"></p>
+<p><img alt="T_slice_zoom_top.png" src="portfolio_images_ssiv/results/T_slice_zoom_top.png"></p>
+<p>The iso-surface contour of MDT (-50 degC) is plotted below. It is seen that the exceedance iso-surface goes up to 10.3 m along axial (-Y axis) direction.</p>
+<p><img alt="-50degC_ISO.png" src="portfolio_images_ssiv/results-50degC_ISO.png"></p>
+<p><img alt="-50degC_ISO_front_zoom.png" src="portfolio_images_ssiv/results-50degC_ISO_front_zoom.png"></p>
+<h4 class="atx" id="velocity-contour">Velocity Contour</h4>
+<p>The XY velocity contour indicates fluid undergoes rapid deceleration due to the sudden expansion from the chord-inlet to the full pipe diameter. A high-velocity gradient, or a free shear layer is clearly visible just ahead of the inlet. This layer is responsible for the turbulent mixing between the high-speed jet and the slower ambient fluid. </p>
+<p><img alt="U_slice.png" src="portfolio_images_ssiv/results/U_slice.png"></p>
+<p><img alt="U_slice_top.png" src="portfolio_images_ssiv/results/U_slice_top.png"></p>
+<h4 class="atx" id="velocity-streamline">Velocity Streamline</h4>
+<p>Streamlines reveal the flow structures generated by the valve leak geometry. The flow separation ahead of the inlet creates a large, primary&nbsp;recirculation zone&nbsp;immediately downstream. Within this zone, the fluid rotates opposite to the main flow direction, trapping cold fluid against the pipe wall. Secondary corner eddies are also visible, consistent with the classic flow physics of a backward-facing step.</p>
+<p><img alt="streamline_iso.png" src="portfolio_images_ssiv/results/streamline_iso.png"></p>
+<p><img alt="streamline_iso_zoom.png" src="portfolio_images_ssiv/results/streamline_iso_zoom.png"></p>
+<h4 class="atx" id="pressure-contour">Pressure Contour</h4>
+<p>The static pressure recovers to ambient levels before the first bend. A localized low-pressure region is observed immediately after the inlet, consistent with the recirculation bubble (vena contracta).</p>
+<p><img alt="p_slice.png" src="portfolio_images_ssiv/results/p_slice.png"></p>
+<p><img alt="p_slice_top.png" src="portfolio_images_ssiv/results/p_slice_top.png"></p>
 </article>
 </body>
 </html>
