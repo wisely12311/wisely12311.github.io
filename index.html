@@ -3,50 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio</title>
+  <title>CFD Project Portfolios - Wisely Yeung</title>
   <style>
-    body {
-      background-color: #000000;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      padding: 50px;
-      text-align: center;
+      padding: 0;
+    }
+
+    body {
+      background-color: #111111;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .container {
-      max-width: 600px;
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-    
-    p {
-      font-size: 1.2rem;
-      color: #cccccc;
       line-height: 1.6;
-      margin-bottom: 2rem;
     }
-    
-    .note {
-      font-size: 0.9rem;
-      color: #888888;
-      font-style: italic;
+
+    header {
+      text-align: center;
+      padding: 60px 24px 40px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #999999;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .projects {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 28px 32px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: #4a9eff;
+      background: #1e2430;
+      transform: translateY(-2px);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #4a9eff;
+      background: rgba(74, 158, 255, 0.1);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #999999;
+      line-height: 1.6;
+    }
+
+    .card .arrow {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #4a9eff;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 24px;
+      font-size: 0.8rem;
+      color: #555555;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    @media (min-width: 640px) {
+      .projects {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Wisely's Portfolio</h1>
-    <p>Welcome to my portfolio. Individual projects are accessible via direct links.</p>
-    <p class="note">Use direct links to specific project pages for navigation.</p>
-  </div>
+  <header>
+    <h1>CFD Project Portfolios - Wisely Yeung</h1>
+    <p>CFD engineering projects covering meshing, turbulence modelling, conjugate heat transfer, and external aerodynamics.</p>
+  </header>
+
+  <section class="projects">
+    <a class="card" href="c42_portfolio.html">
+      <span class="card-tag">External Aero</span>
+      <h2>CFD Simulation of C42</h2>
+      <p>Aerodynamic performance evaluation of a pre-launch F1 car model, providing a baseline for characterisation and analysis.</p>
+      <div class="arrow">View project &rarr;</div>
+    </a>
+
+    <a class="card" href="turbocharger_compressor_portfolio.html">
+      <span class="card-tag">Turbomachinery</span>
+      <h2>Turbocharger Compressor Stage CFD: MRF vs Sliding Mesh</h2>
+      <p>Comparison of steady MRF and unsteady sliding-mesh approaches for predicting compressor performance and pressure fluctuations.</p>
+      <div class="arrow">View project &rarr;</div>
+    </a>
+
+    <a class="card" href="compressor_intake_portfolio.html">
+      <span class="card-tag">Turbomachinery &middot; Transient</span>
+      <h2>Coupled Transient CFD Simulation of a Turbocharger Compressor and Intake Manifold</h2>
+      <p>One-way transient coupling of compressor outlet data to an intake manifold, comparing k-omega SST and DDES turbulence models.</p>
+      <div class="arrow">View project &rarr;</div>
+    </a>
+
+    <a class="card" href="pipe_portfolio.html">
+      <span class="card-tag">Meshing &middot; Internal Flow</span>
+      <h2>Block-Structured Hexahedral Meshing and CFD Analysis of a Complex Pipe Network</h2>
+      <p>Flow distribution, pressure loss, and O-grid meshing strategy for an industrial pipe network with bends, T-junctions, and nozzles.</p>
+      <div class="arrow">View project &rarr;</div>
+    </a>
+
+    <a class="card" href="ssiv_portfolio.html">
+      <span class="card-tag">Conjugate Heat Transfer</span>
+      <h2>Multi-Region Conjugate Heat Transfer (CHT) Analysis of High-Pressure Leakage</h2>
+      <p>OpenFOAM CHT simulation predicting metal temperatures and MDT exceedance caused by a high-pressure fluid leak across a valve seat.</p>
+      <div class="arrow">View project &rarr;</div>
+    </a>
+  </section>
+
+  <footer>
+    &copy; 2026 Wisely. All rights reserved.
+  </footer>
 </body>
 </html>
